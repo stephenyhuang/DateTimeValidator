@@ -87,10 +87,16 @@ def load_values():
 
 def write_output():
     filename = sys.argv[2]
-    output_file = open(OUTPUT_DIR + filename + "_" + timeStamp, "w+")
+    try:
+        output_file = open(OUTPUT_DIR + filename + "_" + timeStamp, "w+")
+    except (PermissionError, OSError) as err:
+        logger.error("Error opening file for write: ", err)
 
     for key in datetime_set.keys():
-        output_file.write("%s\n" % key)
+        try:
+            output_file.write("%s\n" % key)
+        except (IOError, OSError) as err:
+            logger.error("Error writing output to file: ", err)
 
     output_file.close()
 
