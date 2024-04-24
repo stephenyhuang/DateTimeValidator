@@ -97,7 +97,7 @@ def write_output():
 
 if __name__ == "__main__":
     # Check arguments are present
-    if len(sys.argv) < 4:
+    if len(sys.argv) < 3:
         print("Missing arguments.\nUsage:\n"
               "\tpython DateTimeValidator.py <input_filename> <output_filename>")
         exit(1)
