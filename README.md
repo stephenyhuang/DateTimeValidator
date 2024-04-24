@@ -8,9 +8,7 @@
 
 - Dictionary used to store timedate values. Easy way to achieve uniqueness with entries.
 - Pattern matching with regular expressions to validate the format of each datetime value.
-- Logging implemented to provide details on validity of each datetime value, and if value
-is invalid, where is it invalid?
-- 
+- Logging implemented to provide details on validity of each datetime value or whether the value is a repeat. 
 
 ### Assumptions Made
 
