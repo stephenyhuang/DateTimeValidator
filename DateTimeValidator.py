@@ -59,7 +59,7 @@ def load_values():
         input_file = open(INPUT_DIR + filename, "r")
         logger.info("File successfully loaded.")
     except Exception as err:
-        logger.error("Error reading in file: ", err)
+        logger.error("Error reading in file: %s" % err)
 
     while True:
         line = input_file.readline().replace("\n", "")
@@ -87,16 +87,17 @@ def load_values():
 
 def write_output():
     filename = sys.argv[2]
+    output_file = None
     try:
         output_file = open(OUTPUT_DIR + filename + "_" + timeStamp, "w+")
     except (PermissionError, OSError) as err:
-        logger.error("Error opening file for write: ", err)
+        logger.error("Error opening file for write: %s" % err)
 
     for key in datetime_set.keys():
         try:
             output_file.write("%s\n" % key)
-        except (IOError, OSError) as err:
-            logger.error("Error writing output to file: ", err)
+        except (IOError, OSError, AttributeError) as err:
+            logger.error("Error writing output to file: %s" % err)
 
     output_file.close()
 
